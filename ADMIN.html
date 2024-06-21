@@ -3,29 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retrieve IP Address</title>
+    <title>Retrieve IP Addresses</title>
+    <link rel="stylesheet" href="ADMIN.css">
 </head>
 <body>
-    <h1>Retrieved IP Address</h1>
-    <p id="ip-address"></p>
-    <div id="table">
-        <h1>list</h1>
+    <main>
+    <div id="container">
+    <h1 style="color: aquamarine; margin-top: 20vh;">Stored IP Addresses</h1>
+    <div id="table"></div>
     </div>
-    <script>
-        // Retrieve the IP address from local storage
-        const ipAddress = localStorage.getItem('ipv4');
-        
-        function retrieve() {
-            const tableParent = document.getElementById('table');
-            const newID = document.createElement('p');
-            newID.textContent = "IP: " + ipAddress
-            tableParent.appendChild(newID);}
-        // Display the IP address in the paragraph element
-        if (ipAddress) {
-            retrieve();
-        } else {
-            document.getElementById('ip-address').textContent = 'No IP address found in local storage.';
-        }
-    </script>
+    </main>
+    </body>
+    <script src="PRIVATEADMIN.js"></script>
 </body>
 </html>

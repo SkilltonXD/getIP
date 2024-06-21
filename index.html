@@ -3,18 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Store IP Address</title>
 </head>
 <body>
-    <a href="ADMIN.html">admin</a>
+    <h1>Storing IP Address</h1>
+    <script>
+        fetch("https://api.ipify.org?format=json")
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.ip); // Log the IP address to the console
+
+                // Get current timestamp
+                const timestamp = new Date().toISOString();
+
+                // Create an object with the IP address and timestamp
+                const ipEntry = { ip: data.ip, time: timestamp };
+
+                // Retrieve the existing list from localStorage
+                let ipList = JSON.parse(localStorage.getItem('ipv4List')) || [];
+
+                // Add the new entry to the list
+                ipList.push(ipEntry);
+
+                // Store the updated list back in localStorage
+                localStorage.setItem('ipv4List', JSON.stringify(ipList));
+            })
+            .catch(error => console.error('Error fetching IP address:', error));
+    </script>
 </body>
-<script>
-fetch("https://api.ipify.org?format=json")
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.ip);
-        localStorage.setItem('ipv4', data.ip);
-    })
-    .catch(error => console.error('Error fetching IP address:', error));
-</script>
 </html>
