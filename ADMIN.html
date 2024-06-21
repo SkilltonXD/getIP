@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrieve IP Address</title>
+</head>
+<body>
+    <h1>Retrieved IP Address</h1>
+    <p id="ip-address"></p>
+    <div id="table">
+        <h1>list</h1>
+    </div>
+    <script>
+        // Retrieve the IP address from local storage
+        const ipAddress = localStorage.getItem('ipv4');
+        
+        function retrieve() {
+            const tableParent = document.getElementById('table');
+            const newID = document.createElement('p');
+            newID.textContent = "IP: " + ipAddress
+            tableParent.appendChild(newID);}
+        // Display the IP address in the paragraph element
+        if (ipAddress) {
+            retrieve();
+        } else {
+            document.getElementById('ip-address').textContent = 'No IP address found in local storage.';
+        }
+    </script>
+</body>
+</html>
